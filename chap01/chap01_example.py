@@ -18,7 +18,7 @@ def check_prime_invalid(number):
         # invalid code
         result = (number / numbers[i:(i + 5)]).is_integer()
         if any(result):
-            return  False
+            return False
     return True
 
 
