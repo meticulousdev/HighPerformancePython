@@ -1,0 +1,63 @@
+Length of x: 1000
+Total elements: 1000000
+calculate_z_serial_purepython took 9922.141805648804 seconds
+Filename: julia_set_memory_profiler.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+     9   38.113 MiB   38.113 MiB           1   @profile
+    10                                         def calc_pure_python(desired_width, max_iterations):
+    11   38.113 MiB    0.000 MiB           1       x_step = (x2 - x1) / desired_width
+    12   38.113 MiB    0.000 MiB           1       y_step = (y1 - y2) / desired_width
+    13   38.113 MiB    0.000 MiB           1       x = []
+    14   38.113 MiB    0.000 MiB           1       y = []
+    15
+    16   38.113 MiB    0.000 MiB           1       ycoord = y2
+    17   38.113 MiB    0.000 MiB        1001       while ycoord > y1:
+    18   38.113 MiB    0.000 MiB        1000           y.append(ycoord)
+    19   38.113 MiB    0.000 MiB        1000           ycoord += y_step
+    20
+    21   38.113 MiB    0.000 MiB           1       xcoord = x1
+    22   38.113 MiB    0.000 MiB        1001       while xcoord < x2:
+    23   38.113 MiB    0.000 MiB        1000           x.append(xcoord)
+    24   38.113 MiB    0.000 MiB        1000           xcoord += x_step
+    25
+    26   38.113 MiB    0.000 MiB           1       zs = []
+    27   38.113 MiB    0.000 MiB           1       cs = []
+    28
+    29  115.348 MiB   -3.105 MiB        1001       for ycoord in y:
+    30  115.348 MiB -2951.859 MiB     1001000           for xcoord in x:
+    31  115.348 MiB -2955.152 MiB     1000000               zs.append(complex(xcoord, ycoord))
+    32  115.348 MiB -2911.008 MiB     1000000               cs.append(complex(c_real, c_imag))
+    33
+    34  115.348 MiB    0.000 MiB           1       print(f"Length of x: {len(x)}")
+    35  115.348 MiB    0.000 MiB           1       print(f"Total elements: {len(zs)}")
+    36
+    37  115.348 MiB    0.000 MiB           1       start_time = time.time()
+    38
+    39  126.270 MiB  126.270 MiB           1       output = calculate_z_serial_purepython(max_iterations, zs, cs)
+    40
+    41  126.270 MiB    0.000 MiB           1       end_time = time.time()
+    42
+    43  126.270 MiB    0.000 MiB           1       secs = end_time - start_time
+    44  126.270 MiB    0.000 MiB           1       print(calculate_z_serial_purepython.__name__ + " took", secs, "seconds")
+    45
+    46  126.270 MiB    0.000 MiB           1       assert sum(output) == 33219980
+
+
+Filename: julia_set_memory_profiler.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    60  115.348 MiB  115.348 MiB           1   @profile
+    61                                         def calculate_z_serial_purepython(maxiter, zs, cs):
+    62  123.133 MiB    7.785 MiB           1       output = [0] * len(zs)
+    63  126.270 MiB    0.000 MiB     1000001       for i in range(len(zs)):
+    64  126.270 MiB    0.000 MiB     1000000           n = 0
+    65  126.270 MiB    0.000 MiB     1000000           z = zs[i]
+    66  126.270 MiB    0.000 MiB     1000000           c = cs[i]
+    67  126.270 MiB    3.035 MiB    34219980           while abs(z) < 2 and n < maxiter:
+    68  126.270 MiB    0.000 MiB    33219980               z = z * z + c
+    69  126.270 MiB    0.102 MiB    33219980               n += 1
+    70  126.270 MiB    0.000 MiB     1000000           output[i] = n
+    71  126.270 MiB    0.000 MiB           1       return output
