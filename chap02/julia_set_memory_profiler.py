@@ -6,6 +6,7 @@ x1, x2, y1, y2 = -1.8, 1.8, -1.8, 1.8
 c_real, c_imag = -0.62772, -0.42193
 
 
+@profile
 def calc_pure_python(desired_width, max_iterations):
     x_step = (x2 - x1) / desired_width
     y_step = (y1 - y2) / desired_width
@@ -63,7 +64,7 @@ def calculate_z_serial_purepython(maxiter, zs, cs):
         n = 0
         z = zs[i]
         c = cs[i]
-        while n < maxiter and abs(z) < 2:
+        while abs(z) < 2 and n < maxiter:
             z = z * z + c
             n += 1
         output[i] = n
