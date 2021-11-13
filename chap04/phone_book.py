@@ -3,3 +3,9 @@ def find_phonenumber(phonebook, name):
         if n == name:
             return p
     return None
+
+
+if __name__ == "__main__":
+    phonebook = [
+
+    ]
