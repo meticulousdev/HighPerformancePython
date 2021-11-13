@@ -4,6 +4,7 @@ from functools import wraps
 import bisect
 import random
 
+
 def timefn(fn):
     @wraps(fn)
     def measure_time(*args, **kwargs):
@@ -14,12 +15,14 @@ def timefn(fn):
         return result
     return measure_time
 
+
 @timefn
 def linear_search(needle, array):
     for i, item in enumerate(array):
         if item == needle:
             return i
     return -1
+
 
 @timefn
 def binary_search(needle, haystack):
@@ -35,6 +38,7 @@ def binary_search(needle, haystack):
             imin = midpoint + 1
         else:
             return midpoint
+
 
 def find_closest(haystack, needle):
     i = bisect.bisect_left(haystack, needle)
