@@ -1,0 +1,21 @@
+In [1]: from fibonacci_test import *
+
+In [2]: %load_ext memory_profiler
+
+In [3]: %timeit fibonacci_naive()
+1.85 µs ± 18 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+
+In [4]: %memit fibonacci_naive()
+peak memory: 79.78 MiB, increment: 0.23 MiB
+
+In [5]: %timeit fibonacci_transform()
+2.59 µs ± 19.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+
+In [6]: %memit fibonacci_transform()
+peak memory: 80.02 MiB, increment: 0.00 MiB
+
+In [7]: %timeit fibonacci_succinct()
+3.95 µs ± 7.03 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+
+In [8]: %memit fibonacci_succinct()
+peak memory: 80.03 MiB, increment: 0.00 MiB
