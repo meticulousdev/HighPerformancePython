@@ -4,6 +4,7 @@ if 'line_profiler' not in dir() and 'profile' not in dir():
     def profile(func):
         return func
 
+
 def test_some_fn():
     assert some_fn(2) == 4
     assert some_fn(1) == 1
