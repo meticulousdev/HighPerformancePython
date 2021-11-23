@@ -29,6 +29,7 @@ def groupby_day(iterable):
 
 def is_normal(data, threshold=1e-3):
     _, values = zip(*data)
+    # print(values)
     k2, p_value = normaltest(values)
     if p_value < threshold:
         return False
@@ -40,17 +41,31 @@ def filter_anomalous_groups(data):
 
 
 def filter_anomalous_data(data):
+    # data_group = groupby_day(data)
     data_group = groupby_day(data)
     yield from filter_anomalous_groups(data_group)
 
 
-if __name__ == "__main__":
-    filename = "fakedata"
-    data = read_fake_data(filename)
-    anomaly_generator = filter_anomalous_data(data)
-    first_five_anomalies = islice(anomaly_generator, 5)
+def group_window(data, window_size=3):
+    window = tuple(islice(data, window_size))
+    for item in data:
+        yield window
+        window = window[1:] + (item,)
 
-    for data_anomaly in first_five_anomalies:
-        start_date = data_anomaly[0][0]
-        end_date = data_anomaly[-1][0]
-        print(f"Anomaly from {start_date} - {end_date}")
+
+if __name__ == "__main__":
+    # filename = "fakedata"
+    # data = read_fake_data(filename)
+    # filename = "chap05/data.csv"
+    # data = read_data(filename)
+    # anomaly_generator = filter_anomalous_data(data)
+    # first_five_anomalies = islice(anomaly_generator, 5)
+
+    # for data_anomaly in first_five_anomalies:
+    #     start_date = data_anomaly[0][0]
+    #     end_date = data_anomaly[-1][0]
+    #     print(f"Anomaly from {start_date} - {end_date}")
+
+    data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    for i in group_window(data):
+        print(i)
