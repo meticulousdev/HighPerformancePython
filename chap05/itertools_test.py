@@ -1,5 +1,6 @@
 from itertools import count, groupby, filterfalse, islice
-
+import operator
+from typing import List, Dict, Tuple
 
 def itertools_yield():
     yield 0
@@ -35,7 +36,58 @@ def itertools_count_test():
             break
 
 
+def check_one(value):
+    print(f"check_one value: {value}")
+    if value == 1:
+        return True
+    return False
+
+
+def itertools_filterfalse():
+    data_list: List = [0, 2, 1, 6, 1, 1, 4]
+    for i in filterfalse(check_one, data_list):
+        print(i)
+
+
+def itertools_groupby():
+    data_dict: Dict = {'a': 1, 'b': 2, 'c': 3}
+    for k, d in groupby(data_dict):
+        print(f"{k}, {list(d)}")
+    print()
+
+    data_list: List = ['a', 'b', 'c', 'a', 'b']
+    for k, d in groupby(data_list):
+        print(f"{k}, {list(d)}")
+    print()
+
+    # wikidocs
+    data_ld: List[Dict] = [{'key': 'a', 'value': 1},
+                           {'key': 'b', 'value': 2},
+                           {'key': 'c', 'value': 3},
+                           {'key': 'd', 'value': 4},
+                           {'key': 'c', 'value': 3},
+                           {'key': 'd', 'value': 4}]
+
+    for k, d in groupby(data_ld, key=operator.itemgetter('key')):
+        print(f"{k}, {list(d)[0]['value']}")
+    print()
+
+    # stack overflow
+    data_lt: List[Tuple] = [("animal", "dog"), 
+                            ("animal", "cat"), 
+                            ("plant", "flower"), 
+                            ("plant", "tree"), 
+                            ("human", "male"),
+                            ("human", "female")] 
+
+    for key, group in groupby(data_lt, lambda x: x[0]):
+        for thing in group:
+            print(f"{key}, {thing[1]}")
+
+
 if __name__ == "__main__":
     print("main")
     # itertools_yield_test()
     # itertools_count_test()
+    # itertools_filterfalse()
+    itertools_groupby()
