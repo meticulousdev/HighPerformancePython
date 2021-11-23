@@ -33,6 +33,12 @@ def itertools_count_test():
         print(cnt.__next__())
 
     print("for i in count(): print(i)")
+    for i in cnt:
+        print(i) 
+        if i > 10:
+            break
+
+    print("for i in count(): print(i)")
     for i in count():
         print(i) 
         if i > 5:
@@ -93,9 +99,55 @@ def itertools_groupby_test():
 # end of itertools_groupby_test
 
 
+# itertools_islice_test
+def itertools_islice_test():
+    data_list = [f"- {i} -" for i in range(11)]
+    print(data_list)
+    first_five_data = islice(data_list, 5)
+    for i in first_five_data:
+        print(i)
+
+    sliced_data = islice(data_list, 3)
+    print(dir(sliced_data))
+    # range can't exceed data size (unsafe)
+    for _ in range(3):
+        print(sliced_data.__next__())
+# end of itertools_islice_test
+
+
+# itertools_length_of_data
+def itertools_length_of_data():
+    # There are two ways to calculate length of iterator.
+    # The size of data can be calculated by changing type from iterator to list.
+    # However, the type casting changes data type.
+    # It is impossible to use __next__() after type casting.
+    data_list = [f"- {i} -" for i in range(11)]
+    sliced_data = islice(data_list, 5) 
+    print(data_list)
+
+    print("length of data 01")
+    print(len(list(sliced_data)))
+    print(sum(1 for _ in sliced_data))
+    print()
+
+    print("length of data 02")
+    sliced_data = islice(data_list, 5) 
+    print(len(list(sliced_data)))
+    sliced_data = islice(data_list, 5) 
+    print(sum(1 for _ in sliced_data))
+
+    print("print sliced data after calculating length")
+    for i in sliced_data:
+        print(i)
+    print("end of iterttools_length_of_data")
+# end of itertools_length_of_data
+
+
 if __name__ == "__main__":
     print("main")
     # itertools_yield_test()
     # itertools_count_test()
     # itertools_filterfalse_test()
     # itertools_groupby_test()
+    # itertools_islice_test()    
+    itertools_length_of_data()
