@@ -56,16 +56,16 @@ def group_window(data, window_size=3):
 if __name__ == "__main__":
     # filename = "fakedata"
     # data = read_fake_data(filename)
-    # filename = "chap05/data.csv"
-    # data = read_data(filename)
-    # anomaly_generator = filter_anomalous_data(data)
-    # first_five_anomalies = islice(anomaly_generator, 5)
+    filename = "chap05/data.csv"
+    data = read_data(filename)
+    anomaly_generator = filter_anomalous_data(data)
+    first_five_anomalies = islice(anomaly_generator, 5)
 
-    # for data_anomaly in first_five_anomalies:
-    #     start_date = data_anomaly[0][0]
-    #     end_date = data_anomaly[-1][0]
-    #     print(f"Anomaly from {start_date} - {end_date}")
+    for data_anomaly in first_five_anomalies:
+        start_date = data_anomaly[0][0]
+        end_date = data_anomaly[-1][0]
+        print(f"Anomaly from {start_date} - {end_date}")
 
-    data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    for i in group_window(data):
-        print(i)
+    # data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    # for i in group_window(data):
+    #     print(i)
