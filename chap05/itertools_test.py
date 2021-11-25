@@ -88,16 +88,14 @@ def itertools_groupby_test():
     # stack overflow
     data_lt: List[Tuple] = [("animal", "dog"), 
                             ("animal", "cat"), 
-                            ("animal", "bird"), 
                             ("plant", "flower"), 
                             ("plant", "tree"), 
                             ("human", "male"),
                             ("human", "female")] 
 
-    print(list(groupby(data_lt, lambda x: x[0])))
     for key, group in groupby(data_lt, lambda x: x[0]):
-        for x, y in group:
-            print(f"{key}, {x}, {y}")
+        for thing in group:
+            print(f"{key}, {thing[1]}")
 # end of itertools_groupby_test
 
 
