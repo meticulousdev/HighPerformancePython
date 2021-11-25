@@ -1,0 +1,20 @@
+% kernprof -lv diffusion_equation.py
+Wrote profile results to diffusion_equation.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 308.781 s
+File: diffusion_equation.py
+Function: evolve at line 8
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     8                                           @profile
+     9                                           def evolve(grid, dt, D=1.0):
+    10       500        528.0      1.1      0.0      xmax, ymax = grid_shape
+    11       500      94003.0    188.0      0.0      new_grid = [[0.0] * ymax for x in range(xmax)]
+    12    320500      85060.0      0.3      0.0      for i in range(xmax):
+    13 205120000   50856563.0      0.2     16.5          for j in range(ymax):
+    14 204800000   93641937.0      0.5     30.3              grid_xx = (grid[(i + 1) % xmax][j] + grid[(i - 1) % xmax][j] - 2.0 * grid[i][j])
+    15 204800000   91838740.0      0.4     29.7              grid_yy = (grid[i][(j + 1) % ymax] + grid[i][(j - 1) % ymax] - 2.0 * grid[i][j])
+    16 204800000   72263224.0      0.4     23.4              new_grid[i][j] = grid[i][j] + D * (grid_xx + grid_yy) * dt
+    17       500        708.0      1.4      0.0      return new_grid
