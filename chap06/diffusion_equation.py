@@ -4,7 +4,6 @@ import time
 grid_shape = (640, 640)
 
 
-# TODO xmax, ymax
 @profile
 def evolve(grid, dt, D=1.0):
     xmax, ymax = grid_shape
