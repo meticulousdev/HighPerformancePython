@@ -1,0 +1,20 @@
+$ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_equation_fast.py
+
+ Performance counter stats for 'python diffusion_equation_fast.py':
+
+   447,367,054,011      cycles:u                  #    3.687 GHz                    
+ 1,417,115,945,462      instructions:u            #    3.17  insn per cycle         
+       268,539,487      cache-references:u        #    2.213 M/sec                  
+       128,370,527      cache-misses:u            #   47.803 % of all cache refs    
+   293,148,352,919      branches:u                # 2416.049 M/sec                  
+     1,181,671,570      branch-misses:u           #    0.40% of all branches        
+        121,333.76 msec task-clock:u              #    1.000 CPUs utilized          
+            76,883      faults:u                  #    0.634 K/sec                  
+            76,883      minor-faults:u            #    0.634 K/sec                  
+                 0      cs:u                      #    0.000 K/sec                  
+                 0      migrations:u              #    0.000 K/sec                  
+
+     121.337865439 seconds time elapsed
+
+     121.261539000 seconds user
+       0.073000000 seconds sys
