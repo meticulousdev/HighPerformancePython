@@ -1,0 +1,15 @@
+kernprof -lv diffusion_equation_numpy_inplace.py
+Wrote profile results to diffusion_equation_numpy_inplace.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 1.31242 s
+File: diffusion_equation_numpy_inplace.py
+Function: evolve at line 17
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    17                                           @profile
+    18                                           def evolve(grid, dt, out, D=1):
+    19       500    1135268.0   2270.5     86.5      laplacian(grid, out)
+    20       500      76265.0    152.5      5.8      out *= D * dt
+    21       500     100883.0    201.8      7.7      out += grid
