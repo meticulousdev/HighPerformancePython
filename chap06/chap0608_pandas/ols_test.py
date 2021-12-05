@@ -1,3 +1,4 @@
+import time
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import pandas as pd
@@ -44,10 +45,8 @@ def ols_lstsq_raw(row):
     return m
 
 
-def test_data():
+def test_data(ncol: int, nrow: int):
     np.random.seed(1)
-    ncol = 14
-    nrow = 3
     data = np.zeros((nrow, ncol))
     for i in range(data.shape[0]):
         data[i, :] = np.random.random(ncol) + 1
@@ -60,15 +59,55 @@ def test_data():
 
 
 if __name__ == '__main__':
-    df = test_data()
+    # # example 6-24
+    # ncol = 14
+    # nrow = 3
+    # df = test_data(ncol, nrow)
+    # 
+    # m = ols_sklearn(df.iloc[0])
+    # print(m)
+    # 
+    # # example 6-25
+    # ols_sklearn_lineprofiler(df.iloc[0])
+    # 
+    # m = ols_lstsq(df.iloc[0])
+    # print(m)
+    # 
+    # m = ols_lstsq_raw(df.iloc[0].to_numpy())
+    # print(m)
 
-    m = ols_sklearn(df.iloc[0])
-    print(m)
+    # example 6-26 ~ 6-29
+    ncol = 14 
+    nrow = 100_000
+    df = test_data(ncol, nrow)
     
-    ols_sklearn_lineprofiler(df.iloc[0])
-    
-    m = ols_lstsq(df.iloc[0])
-    print(m)
-    
-    m = ols_lstsq_raw(df.iloc[0].to_numpy())
-    print(m)
+    start = time.time()
+    ms = []
+    for row_idx in range(df.shape[0]):
+        row = df.iloc[row_idx]
+        m = ols_lstsq(row)
+        ms.append(m)
+    results = pd.Series(ms)
+    print(f"elapsed time: {time.time() - start}")
+    # elapsed time: 14.74239706993103
+
+    start = time.time()
+    ms = []
+    for row_idx, row in df.iterrows():
+        m = ols_lstsq(row)
+        ms.append(m)
+    results = pd.Series(ms)
+    print(f"elapsed time: {time.time() - start}")
+    # elapsed time: 11.308629989624023
+
+    start = time.time()
+    ms = df.apply(ols_lstsq, axis=1)
+    results = pd.Series(ms)
+    print(f"elapsed time: {time.time() - start}")
+    # elapsed time: 5.7157301902771
+
+    start = time.time()
+    ms = df.apply(ols_lstsq_raw, axis=1, raw=True)
+    results = pd.Series(ms)
+    print(f"elapsed time: {time.time() - start}")
+    # elapsed time: 3.817999839782715
