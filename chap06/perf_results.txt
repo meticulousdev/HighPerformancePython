@@ -1,3 +1,25 @@
+$ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_python.py
+
+ Performance counter stats for 'python diffusion_python.py':
+
+   596,591,925,748      cycles                    #    3.170 GHz                      (66.66%)
+ 1,277,466,619,910      instructions              #    2.14  insn per cycle           (83.33%)
+       182,292,188      cache-references          #    0.968 M/sec                    (83.33%)
+        87,422,576      cache-misses              #   47.957 % of all cache refs      (83.33%)
+   267,779,887,125      branches                  # 1422.672 M/sec                    (83.33%)
+     5,150,558,477      branch-misses             #    1.92% of all branches          (83.33%)
+        188,223.20 msec task-clock                #    0.999 CPUs utilized          
+           184,676      faults                    #    0.981 K/sec                  
+           184,676      minor-faults              #    0.981 K/sec                  
+            18,450      cs                        #    0.098 K/sec                  
+               111      migrations                #    0.001 K/sec                  
+
+     188.385069487 seconds time elapsed
+
+     188.001403000 seconds user
+       0.279847000 seconds sys
+
+
 $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_python_memory.py
 
  Performance counter stats for 'python diffusion_python_memory.py':
