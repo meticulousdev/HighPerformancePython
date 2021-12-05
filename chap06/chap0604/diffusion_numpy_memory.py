@@ -14,7 +14,6 @@ def laplacian(grid, out):
     out += np.roll(grid, -1, 1)
 
 
-@profile
 def evolve(grid, dt, out, D=1):
     laplacian(grid, out)
     out *= D * dt
