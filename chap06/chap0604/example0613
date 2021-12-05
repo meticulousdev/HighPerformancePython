@@ -1,0 +1,17 @@
+In [1]: import numpy as np
+
+In [2]: %%timeit array1, array2 = np.random.random((2, 100, 100))
+   ...: array1 = array1 + array2
+4.5 µs ± 9.95 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+
+In [3]: %%timeit array1, array2 = np.random.random((2, 100, 100))
+   ...: array1 += array2
+4.88 µs ± 8.68 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+
+In [4]: %%timeit array1, array2 = np.random.random((2, 5, 5))
+   ...: array1 = array1 + array2
+316 ns ± 0.914 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+
+In [5]: %%timeit array1, array2 = np.random.random((2, 5, 5))
+   ...: array1 += array2
+590 ns ± 32.9 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)

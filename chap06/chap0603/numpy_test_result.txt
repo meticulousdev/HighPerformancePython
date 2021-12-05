@@ -1,0 +1,22 @@
+In [1]: from numpy_test import *
+
+In [2]: vector = list(range(1_000_000))
+
+In [3]: %timeit norm_square_list(vector)
+63.7 ms ± 3.46 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+
+In [4]: %timeit norm_square_list_comprehension(vector)
+57.5 ms ± 112 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+
+In [5]: vector_array = array('l', range(1_000_000))
+
+In [6]: %timeit norm_square_array(vector_array)
+71.1 ms ± 1.11 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+
+In [7]: vector_np = np.arange(1_000_000)
+
+In [8]: %timeit norm_square_numpy(vector_np)
+1.69 ms ± 26.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+
+In [9]: %timeit norm_square_numpy_dot(vector_np)
+605 µs ± 7.46 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
