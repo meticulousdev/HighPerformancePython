@@ -1,0 +1,116 @@
+scikit-learn version: 1.0.1
+
+1. self._validate_data
+- sklearn.base
+- Validate input data and set or check the 'n_features_in_' attribute
+- https://scikit-optimize.github.io/stable/_modules/sklearn/base.html
+
+2. self._preprocess_data
+- sklearn.linear_model._base
+- Center and scale data
+- https://github.com/scikit-learn/scikit-learn/blob/main/sklearn/linear_model/_base.py
+
+Run on a single row
+Timer unit: 1e-06 s
+
+Total time: 0.000559 s
+File: /opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/sklearn/linear_model/_base.py
+Function: fit at line 630
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   630                                               def fit(self, X, y, sample_weight=None):
+   631                                                   """
+   632                                                   Fit linear model.
+   633                                           
+   634                                                   Parameters
+   635                                                   ----------
+   636                                                   X : {array-like, sparse matrix} of shape (n_samples, n_features)
+   637                                                       Training data.
+   638                                           
+   639                                                   y : array-like of shape (n_samples,) or (n_samples, n_targets)
+   640                                                       Target values. Will be cast to X's dtype if necessary.
+   641                                           
+   642                                                   sample_weight : array-like of shape (n_samples,), default=None
+   643                                                       Individual weights for each sample.
+   644                                           
+   645                                                       .. versionadded:: 0.17
+   646                                                          parameter *sample_weight* support to LinearRegression.
+   647                                           
+   648                                                   Returns
+   649                                                   -------
+   650                                                   self : object
+   651                                                       Fitted Estimator.
+   652                                                   """
+   653                                           
+   654         2         11.0      5.5      2.0          _normalize = _deprecate_normalize(
+   655         1          3.0      3.0      0.5              self.normalize, default=False, estimator_name=self.__class__.__name__
+   656                                                   )
+   657                                           
+   658         1          1.0      1.0      0.2          n_jobs_ = self.n_jobs
+   659                                           
+   660         1          1.0      1.0      0.2          accept_sparse = False if self.positive else ["csr", "csc", "coo"]
+   661                                           
+   662         2        234.0    117.0     41.9          X, y = self._validate_data(
+   663         1          2.0      2.0      0.4              X, y, accept_sparse=accept_sparse, y_numeric=True, multi_output=True
+   664                                                   )
+   665                                           
+   666         1          2.0      2.0      0.4          if sample_weight is not None:
+   667                                                       sample_weight = _check_sample_weight(sample_weight, X, dtype=X.dtype)
+   668                                           
+   669         2        168.0     84.0     30.1          X, y, X_offset, y_offset, X_scale = self._preprocess_data(
+   670         1          1.0      1.0      0.2              X,
+   671         1          2.0      2.0      0.4              y,
+   672         1          1.0      1.0      0.2              fit_intercept=self.fit_intercept,
+   673         1          2.0      2.0      0.4              normalize=_normalize,
+   674         1          1.0      1.0      0.2              copy=self.copy_X,
+   675         1          2.0      2.0      0.4              sample_weight=sample_weight,
+   676         1          1.0      1.0      0.2              return_mean=True,
+   677                                                   )
+   678                                           
+   679         1          2.0      2.0      0.4          if sample_weight is not None:
+   680                                                       # Sample weight can be implemented via a simple rescaling.
+   681                                                       X, y = _rescale_data(X, y, sample_weight)
+   682                                           
+   683         1          2.0      2.0      0.4          if self.positive:
+   684                                                       if y.ndim < 2:
+   685                                                           self.coef_, self._residues = optimize.nnls(X, y)
+   686                                                       else:
+   687                                                           # scipy.optimize.nnls cannot handle y with shape (M, K)
+   688                                                           outs = Parallel(n_jobs=n_jobs_)(
+   689                                                               delayed(optimize.nnls)(X, y[:, j]) for j in range(y.shape[1])
+   690                                                           )
+   691                                                           self.coef_, self._residues = map(np.vstack, zip(*outs))
+   692         1          2.0      2.0      0.4          elif sp.issparse(X):
+   693                                                       X_offset_scale = X_offset / X_scale
+   694                                           
+   695                                                       def matvec(b):
+   696                                                           return X.dot(b) - b.dot(X_offset_scale)
+   697                                           
+   698                                                       def rmatvec(b):
+   699                                                           return X.T.dot(b) - X_offset_scale * np.sum(b)
+   700                                           
+   701                                                       X_centered = sparse.linalg.LinearOperator(
+   702                                                           shape=X.shape, matvec=matvec, rmatvec=rmatvec
+   703                                                       )
+   704                                           
+   705                                                       if y.ndim < 2:
+   706                                                           out = sparse_lsqr(X_centered, y)
+   707                                                           self.coef_ = out[0]
+   708                                                           self._residues = out[3]
+   709                                                       else:
+   710                                                           # sparse_lstsq cannot handle y with shape (M, K)
+   711                                                           outs = Parallel(n_jobs=n_jobs_)(
+   712                                                               delayed(sparse_lsqr)(X_centered, y[:, j].ravel())
+   713                                                               for j in range(y.shape[1])
+   714                                                           )
+   715                                                           self.coef_ = np.vstack([out[0] for out in outs])
+   716                                                           self._residues = np.vstack([out[3] for out in outs])
+   717                                                   else:
+   718         1        101.0    101.0     18.1              self.coef_, self._residues, self.rank_, self.singular_ = linalg.lstsq(X, y)
+   719         1          2.0      2.0      0.4              self.coef_ = self.coef_.T
+   720                                           
+   721         1          2.0      2.0      0.4          if y.ndim == 1:
+   722         1          6.0      6.0      1.1              self.coef_ = np.ravel(self.coef_)
+   723         1          8.0      8.0      1.4          self._set_intercept(X_offset, y_offset, X_scale)
+   724         1          2.0      2.0      0.4          return self

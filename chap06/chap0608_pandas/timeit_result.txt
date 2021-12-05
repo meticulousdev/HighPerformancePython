@@ -1,0 +1,12 @@
+In [1]: from ols_test import *
+
+In [2]: df = test_data()
+
+In [3]: %timeit m = ols_sklearn(df.iloc[0])
+174 µs ± 17.8 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+
+In [4]: %timeit m = ols_lstsq(df.iloc[0])
+51.2 µs ± 504 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+
+In [5]: %timeit m = ols_lstsq_raw(df.iloc[0].to_numpy())
+59.4 µs ± 7.1 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
