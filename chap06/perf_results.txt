@@ -86,4 +86,47 @@ $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch
        0.012017000 seconds sys
 
 
+$ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_numpy_memory2_numexpr.py
+
+ Performance counter stats for 'python diffusion_numpy_memory2_numexpr.py':
+
+    10,903,006,809      cycles                    #    2.524 GHz                      (67.08%)
+     9,100,171,551      instructions              #    0.83  insn per cycle           (82.92%)
+       360,481,801      cache-references          #   83.459 M/sec                    (82.85%)
+        85,560,690      cache-misses              #   23.735 % of all cache refs      (84.20%)
+       873,536,475      branches                  #  202.241 M/sec                    (83.11%)
+         9,937,229      branch-misses             #    1.14% of all branches          (82.81%)
+          4,319.28 msec task-clock                #    1.225 CPUs utilized          
+            10,948      faults                    #    0.003 M/sec                  
+            10,497      minor-faults              #    0.002 M/sec                  
+             5,938      cs                        #    0.001 M/sec                  
+             1,628      migrations                #    0.377 K/sec                  
+
+       3.524542911 seconds time elapsed
+
+       4.181954000 seconds user
+       0.220339000 seconds sys
+
+
+$ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_scipy.py
+
+ Performance counter stats for 'python diffusion_scipy.py':
+
+    19,679,588,718      cycles                    #    2.634 GHz                      (66.58%)
+    18,848,366,725      instructions              #    0.96  insn per cycle           (83.13%)
+       624,324,174      cache-references          #   83.556 M/sec                    (83.32%)
+       268,534,506      cache-misses              #   43.012 % of all cache refs      (83.57%)
+     2,492,117,110      branches                  #  333.529 M/sec                    (82.96%)
+        12,807,114      branch-misses             #    0.51% of all branches          (83.61%)
+          7,471.96 msec task-clock                #    1.162 CPUs utilized          
+            13,991      faults                    #    0.002 M/sec                  
+            13,979      minor-faults              #    0.002 M/sec                  
+             6,274      cs                        #    0.840 K/sec                  
+             1,779      migrations                #    0.238 K/sec                  
+
+       6.431418635 seconds time elapsed
+
+       7.320534000 seconds user
+       0.230749000 seconds sys
+
 
