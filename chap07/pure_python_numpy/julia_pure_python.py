@@ -1,4 +1,5 @@
 import time
+import numpy as np
 
 
 x1, x2, y1, y2 = -1.8, 1.8, -1.8, 1.8
@@ -28,7 +29,7 @@ def calc_pure_python(desired_width, max_iterations):
         for xcoord in x:
             zs.append(complex(xcoord, ycoord))
             cs.append(complex(c_real, c_imag))
-
+    
     print(f"Length of x: {len(x)}")
     print(f"Total elements: {len(zs)}")
 
@@ -45,7 +46,7 @@ def calc_pure_python(desired_width, max_iterations):
 
 
 def calculate_z_serial_purepython(maxiter, zs, cs):
-    output = [0] * len(zs)
+    output = np.empty(len(zs), dtype=np.int32)
     for i in range(len(zs)):
         n = 0
         z = zs[i]
@@ -62,4 +63,5 @@ if __name__ == "__main__":
 
     # Length of x: 1000
     # Total elements: 1000000
-    # calculate_z_serial_purepython took 5.5684521198272705 seconds
+    # calculate_z_serial_purepython took 5.5661280155181885 seconds
+    # 21 seconds?
