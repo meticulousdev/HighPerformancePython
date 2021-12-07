@@ -111,3 +111,15 @@ if __name__ == '__main__':
     results = pd.Series(ms)
     print(f"elapsed time: {time.time() - start}")
     # elapsed time: 3.817999839782715
+
+    start = time.time()
+    results = None
+    for row_idx in range(df.shape[0]):
+        row = df.iloc[row_idx]
+        m = ols_lstsq(row)
+        if results is None:
+            results = pd.Series([m])
+        else:
+            results = pd.concat((results, pd.Series([m])))
+    print(f"elapsed time: {time.time() - start}")
+    # elapsed time: 48.358970165252686

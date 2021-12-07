@@ -5,6 +5,7 @@ grid_shape = (640, 640)
 
 
 def evolve(grid, dt, out, D=1.0):
+    # TODO: time check
     xmax, ymax = grid_shape
     for i in range(xmax):
         for j in range(ymax):

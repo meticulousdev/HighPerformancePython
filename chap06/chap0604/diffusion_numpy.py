@@ -28,3 +28,7 @@ def run_experiment(num_iterations):
     for i in range(num_iterations):
         grid = evolve(grid, 0, 1)
     return time.time() - start
+
+
+if __name__ == "__main__":
+    run_experiment(500)

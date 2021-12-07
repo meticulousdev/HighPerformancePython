@@ -42,6 +42,7 @@ $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch
        0.027986000 seconds sys
 
 
+# TODO: run?
 $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_numpy.py
 
  Performance counter stats for 'python diffusion_numpy.py':
