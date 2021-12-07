@@ -1,0 +1,21 @@
+Wrote profile results to julia_pure_python.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 37.5922 s
+File: julia_pure_python.py
+Function: calculate_z_serial_purepython at line 48
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    48                                           @profile
+    49                                           def calculate_z_serial_purepython(maxiter, zs, cs):
+    50         1        987.0    987.0      0.0      output = [0] * len(zs)
+    51   1000001     307929.0      0.3      0.8      for i in range(len(zs)):
+    52   1000000     291024.0      0.3      0.8          n = 0
+    53   1000000     392569.0      0.4      1.0          z = zs[i]
+    54   1000000     330298.0      0.3      0.9          c = cs[i]
+    55  34219980   13896435.0      0.4     37.0          while abs(z) < 2 and n < maxiter:
+    56  33219980   11214306.0      0.3     29.8              z = z * z + c
+    57  33219980   10827050.0      0.3     28.8              n += 1
+    58   1000000     331575.0      0.3      0.9          output[i] = n
+    59         1          1.0      1.0      0.0      return output
