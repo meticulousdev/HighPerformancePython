@@ -42,27 +42,26 @@ $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch
        0.027986000 seconds sys
 
 
-# TODO: run?
 $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_numpy.py
 
  Performance counter stats for 'python diffusion_numpy.py':
 
-       441,608,435      cycles                    #    2.569 GHz                      (66.76%)
-       427,929,097      instructions              #    0.97  insn per cycle           (83.75%)
-         6,835,723      cache-references          #   39.763 M/sec                    (84.06%)
-         1,581,202      cache-misses              #   23.131 % of all cache refs      (83.82%)
-        96,168,976      branches                  #  559.415 M/sec                    (83.79%)
-         4,075,808      branch-misses             #    4.24% of all branches          (82.12%)
-            171.91 msec task-clock                #    0.993 CPUs utilized          
-             8,094      faults                    #    0.047 M/sec                  
-             8,094      minor-faults              #    0.047 M/sec                  
-                33      cs                        #    0.192 K/sec                  
-                 3      migrations                #    0.017 K/sec                  
+    12,239,250,264      cycles                    #    2.866 GHz                      (66.09%)
+     7,346,125,825      instructions              #    0.60  insn per cycle           (83.42%)
+       403,699,250      cache-references          #   94.545 M/sec                    (83.23%)
+       171,570,625      cache-misses              #   42.500 % of all cache refs      (83.44%)
+     1,190,767,078      branches                  #  278.875 M/sec                    (83.73%)
+         8,905,910      branch-misses             #    0.75% of all branches          (83.52%)
+          4,269.90 msec task-clock                #    0.932 CPUs utilized          
+           401,958      faults                    #    0.094 M/sec                  
+           401,519      minor-faults              #    0.094 M/sec                  
+             1,893      cs                        #    0.443 K/sec                  
+                94      migrations                #    0.022 K/sec                  
 
-       0.173054783 seconds time elapsed
+       4.583514806 seconds time elapsed
 
-       0.148103000 seconds user
-       0.023826000 seconds sys
+       3.650486000 seconds user
+       0.635434000 seconds sys
 
 
 $ perf stat -e cycles,instructions,cache-references,cache-misses,branches,branch-misses,task-clock,faults,minor-faults,cs,migrations python diffusion_numpy_memory.py
