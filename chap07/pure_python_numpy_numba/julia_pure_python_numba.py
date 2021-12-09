@@ -1,5 +1,6 @@
 import time
 import numpy as np
+from numba import jit
 
 
 x1, x2, y1, y2 = -1.8, 1.8, -1.8, 1.8
@@ -35,7 +36,7 @@ def calc_pure_python(desired_width, max_iterations):
 
     start_time = time.time()
 
-    output = calculate_z_serial_purepython(max_iterations, zs, cs)
+    output = calculate_z_serial_purepython(max_iterations, np.array(zs), np.array(cs))
 
     end_time = time.time()
 
@@ -45,6 +46,7 @@ def calc_pure_python(desired_width, max_iterations):
     assert sum(output) == 33219980
 
 
+@jit()
 def calculate_z_serial_purepython(maxiter, zs, cs):
     output = np.empty(len(zs), dtype=np.int32)
     for i in range(len(zs)):
@@ -63,5 +65,4 @@ if __name__ == "__main__":
 
     # Length of x: 1000
     # Total elements: 1000000
-    # calculate_z_serial_purepython took 5.5661280155181885 seconds
-    # 21 seconds?
+    # calculate_z_serial_purepython took 0.6689820289611816 seconds
