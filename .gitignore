@@ -1,5 +1,5 @@
 .idea
 .DS_Store
 
-doc
+reference
 chap05/data_generation.py
