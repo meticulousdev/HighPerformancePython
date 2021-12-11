@@ -5,10 +5,13 @@
     "distutils": {
         "depends": [],
         "extra_compile_args": [
-            "-fopenmp"
+            "-w",
+            "-fopenmp",
+            "-stdlib=libc++"
         ],
         "extra_link_args": [
-            "-fopenmp"
+            "-fopenmp",
+            "-stdlib=libc++"
         ],
         "name": "cythonfn_OpenMP",
         "sources": [
@@ -2577,9 +2580,9 @@ static PyObject *__pyx_codeobj__22;
 static PyObject *__pyx_codeobj__29;
 /* Late includes */
 
-/* "cythonfn_OpenMP.pyx":7
- * 
- * 
+/* "cythonfn_OpenMP.pyx":9
+ * # TODO: Exception has occurred: TypeError
+ * #       a bytes-like object is required, not 'list'
  * def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):             # <<<<<<<<<<<<<<
  *     cdef unsigned int i, length
  *     cdef double complex z, c
@@ -2623,17 +2626,17 @@ static PyObject *__pyx_pw_15cythonfn_OpenMP_1calculate_z(PyObject *__pyx_self, P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_zs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calculate_z", 1, 3, 3, 1); __PYX_ERR(0, 7, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("calculate_z", 1, 3, 3, 1); __PYX_ERR(0, 9, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_cs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("calculate_z", 1, 3, 3, 2); __PYX_ERR(0, 7, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("calculate_z", 1, 3, 3, 2); __PYX_ERR(0, 9, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "calculate_z") < 0)) __PYX_ERR(0, 7, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "calculate_z") < 0)) __PYX_ERR(0, 9, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2642,13 +2645,13 @@ static PyObject *__pyx_pw_15cythonfn_OpenMP_1calculate_z(PyObject *__pyx_self, P
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_maxiter = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_maxiter == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 7, __pyx_L3_error)
-    __pyx_v_zs = __Pyx_PyObject_to_MemoryviewSlice_ds___pyx_t_double_complex(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_zs.memview)) __PYX_ERR(0, 7, __pyx_L3_error)
-    __pyx_v_cs = __Pyx_PyObject_to_MemoryviewSlice_ds___pyx_t_double_complex(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_cs.memview)) __PYX_ERR(0, 7, __pyx_L3_error)
+    __pyx_v_maxiter = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_maxiter == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
+    __pyx_v_zs = __Pyx_PyObject_to_MemoryviewSlice_ds___pyx_t_double_complex(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_zs.memview)) __PYX_ERR(0, 9, __pyx_L3_error)
+    __pyx_v_cs = __Pyx_PyObject_to_MemoryviewSlice_ds___pyx_t_double_complex(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_cs.memview)) __PYX_ERR(0, 9, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calculate_z", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 7, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calculate_z", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 9, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cythonfn_OpenMP.calculate_z", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2687,47 +2690,47 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate_z", 0);
 
-  /* "cythonfn_OpenMP.pyx":10
+  /* "cythonfn_OpenMP.pyx":12
  *     cdef unsigned int i, length
  *     cdef double complex z, c
  *     cdef int[:] output = np.empty(len(zs), dtype=np.int32)             # <<<<<<<<<<<<<<
  *     length = len(zs)
  *     with nogil:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_empty); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = __Pyx_MemoryView_Len(__pyx_v_zs); 
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_t_6, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_t_6, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_output = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "cythonfn_OpenMP.pyx":11
+  /* "cythonfn_OpenMP.pyx":13
  *     cdef double complex z, c
  *     cdef int[:] output = np.empty(len(zs), dtype=np.int32)
  *     length = len(zs)             # <<<<<<<<<<<<<<
@@ -2737,7 +2740,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
   __pyx_t_3 = __Pyx_MemoryView_Len(__pyx_v_zs); 
   __pyx_v_length = __pyx_t_3;
 
-  /* "cythonfn_OpenMP.pyx":12
+  /* "cythonfn_OpenMP.pyx":14
  *     cdef int[:] output = np.empty(len(zs), dtype=np.int32)
  *     length = len(zs)
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -2752,7 +2755,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
       #endif
       /*try:*/ {
 
-        /* "cythonfn_OpenMP.pyx":13
+        /* "cythonfn_OpenMP.pyx":15
  *     length = len(zs)
  *     with nogil:
  *         for i in prange(length, schedule='guided'):             # <<<<<<<<<<<<<<
@@ -2796,7 +2799,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                         {
                             __pyx_v_i = (unsigned int)(0 + 1 * __pyx_t_9);
 
-                            /* "cythonfn_OpenMP.pyx":14
+                            /* "cythonfn_OpenMP.pyx":16
  *     with nogil:
  *         for i in prange(length, schedule='guided'):
  *             z = zs[i]             # <<<<<<<<<<<<<<
@@ -2808,11 +2811,11 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                             if (unlikely(__pyx_t_3 >= (size_t)__pyx_v_zs.shape[0])) __pyx_t_11 = 0;
                             if (unlikely(__pyx_t_11 != -1)) {
                               __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_11);
-                              __PYX_ERR(0, 14, __pyx_L8_error)
+                              __PYX_ERR(0, 16, __pyx_L8_error)
                             }
                             __pyx_v_z = (*((__pyx_t_double_complex *) ( /* dim=0 */ (__pyx_v_zs.data + __pyx_t_3 * __pyx_v_zs.strides[0]) )));
 
-                            /* "cythonfn_OpenMP.pyx":15
+                            /* "cythonfn_OpenMP.pyx":17
  *         for i in prange(length, schedule='guided'):
  *             z = zs[i]
  *             c = cs[i]             # <<<<<<<<<<<<<<
@@ -2824,11 +2827,11 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                             if (unlikely(__pyx_t_3 >= (size_t)__pyx_v_cs.shape[0])) __pyx_t_11 = 0;
                             if (unlikely(__pyx_t_11 != -1)) {
                               __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_11);
-                              __PYX_ERR(0, 15, __pyx_L8_error)
+                              __PYX_ERR(0, 17, __pyx_L8_error)
                             }
                             __pyx_v_c = (*((__pyx_t_double_complex *) ( /* dim=0 */ (__pyx_v_cs.data + __pyx_t_3 * __pyx_v_cs.strides[0]) )));
 
-                            /* "cythonfn_OpenMP.pyx":16
+                            /* "cythonfn_OpenMP.pyx":18
  *             z = zs[i]
  *             c = cs[i]
  *             output[i] = 0             # <<<<<<<<<<<<<<
@@ -2840,11 +2843,11 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                             if (unlikely(__pyx_t_3 >= (size_t)__pyx_v_output.shape[0])) __pyx_t_11 = 0;
                             if (unlikely(__pyx_t_11 != -1)) {
                               __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_11);
-                              __PYX_ERR(0, 16, __pyx_L8_error)
+                              __PYX_ERR(0, 18, __pyx_L8_error)
                             }
                             *((int *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_3 * __pyx_v_output.strides[0]) )) = 0;
 
-                            /* "cythonfn_OpenMP.pyx":17
+                            /* "cythonfn_OpenMP.pyx":19
  *             c = cs[i]
  *             output[i] = 0
  *             while output[i] < maxiter and (z.real * z.real + z.imag * z.imag) < 4:             # <<<<<<<<<<<<<<
@@ -2857,7 +2860,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                               if (unlikely(__pyx_t_3 >= (size_t)__pyx_v_output.shape[0])) __pyx_t_11 = 0;
                               if (unlikely(__pyx_t_11 != -1)) {
                                 __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_11);
-                                __PYX_ERR(0, 17, __pyx_L8_error)
+                                __PYX_ERR(0, 19, __pyx_L8_error)
                               }
                               __pyx_t_13 = (((*((int *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_3 * __pyx_v_output.strides[0]) ))) < __pyx_v_maxiter) != 0);
                               if (__pyx_t_13) {
@@ -2870,7 +2873,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                               __pyx_L12_bool_binop_done:;
                               if (!__pyx_t_12) break;
 
-                              /* "cythonfn_OpenMP.pyx":18
+                              /* "cythonfn_OpenMP.pyx":20
  *             output[i] = 0
  *             while output[i] < maxiter and (z.real * z.real + z.imag * z.imag) < 4:
  *                 z = z * z + c             # <<<<<<<<<<<<<<
@@ -2879,7 +2882,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
  */
                               __pyx_v_z = __Pyx_c_sum_double(__Pyx_c_prod_double(__pyx_v_z, __pyx_v_z), __pyx_v_c);
 
-                              /* "cythonfn_OpenMP.pyx":19
+                              /* "cythonfn_OpenMP.pyx":21
  *             while output[i] < maxiter and (z.real * z.real + z.imag * z.imag) < 4:
  *                 z = z * z + c
  *                 output[i] += 1             # <<<<<<<<<<<<<<
@@ -2890,7 +2893,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
                               if (unlikely(__pyx_t_3 >= (size_t)__pyx_v_output.shape[0])) __pyx_t_11 = 0;
                               if (unlikely(__pyx_t_11 != -1)) {
                                 __Pyx_RaiseBufferIndexErrorNogil(__pyx_t_11);
-                                __PYX_ERR(0, 19, __pyx_L8_error)
+                                __PYX_ERR(0, 21, __pyx_L8_error)
                               }
                               *((int *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_3 * __pyx_v_output.strides[0]) )) += 1;
                             }
@@ -2979,7 +2982,7 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
         #endif
       }
 
-      /* "cythonfn_OpenMP.pyx":12
+      /* "cythonfn_OpenMP.pyx":14
  *     cdef int[:] output = np.empty(len(zs), dtype=np.int32)
  *     length = len(zs)
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -3005,21 +3008,21 @@ static PyObject *__pyx_pf_15cythonfn_OpenMP_calculate_z(CYTHON_UNUSED PyObject *
       }
   }
 
-  /* "cythonfn_OpenMP.pyx":20
+  /* "cythonfn_OpenMP.pyx":22
  *                 z = z * z + c
  *                 output[i] += 1
  *     return output             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_output, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_output, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "cythonfn_OpenMP.pyx":7
- * 
- * 
+  /* "cythonfn_OpenMP.pyx":9
+ * # TODO: Exception has occurred: TypeError
+ * #       a bytes-like object is required, not 'list'
  * def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):             # <<<<<<<<<<<<<<
  *     cdef unsigned int i, length
  *     cdef double complex z, c
@@ -3368,7 +3371,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":929
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -3380,7 +3383,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":930
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":932
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -3389,7 +3392,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":931
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":933
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -3398,7 +3401,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":929
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -3410,7 +3413,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":933
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -3425,7 +3428,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":934
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":936
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -3434,7 +3437,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":935
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -3444,7 +3447,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":936
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":938
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -3455,7 +3458,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":935
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -3464,7 +3467,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":937
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":939
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -3476,7 +3479,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":933
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -3491,7 +3494,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":941
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -3515,7 +3518,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":942
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3531,16 +3534,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":943
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":945
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")
  */
-      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 943, __pyx_L3_error)
+      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 945, __pyx_L3_error)
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":942
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3554,7 +3557,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":944
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":946
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3564,28 +3567,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 944, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 946, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":945
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 945, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 947, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 945, __pyx_L5_except_error)
+      __PYX_ERR(1, 947, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":942
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3600,7 +3603,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":941
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -3623,7 +3626,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":947
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -3647,7 +3650,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":948
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3663,16 +3666,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":949
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":951
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 949, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 951, __pyx_L3_error)
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":948
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3686,7 +3689,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":950
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":952
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3696,28 +3699,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 950, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 952, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":951
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 951, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 953, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 951, __pyx_L5_except_error)
+      __PYX_ERR(1, 953, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":948
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3732,7 +3735,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":947
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -3755,7 +3758,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":953
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -3779,7 +3782,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":954
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3795,16 +3798,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":955
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":957
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 955, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 957, __pyx_L3_error)
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":954
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3818,7 +3821,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":956
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":958
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3828,28 +3831,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 956, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 958, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":957
+      /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":959
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef extern from *:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 957, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 959, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 957, __pyx_L5_except_error)
+      __PYX_ERR(1, 959, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":954
+    /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3864,7 +3867,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":953
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -3887,7 +3890,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":967
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -3900,7 +3903,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_timedelta64_object", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":979
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":981
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -3910,7 +3913,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":967
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -3924,7 +3927,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":982
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -3937,7 +3940,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_datetime64_object", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":994
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":996
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -3947,7 +3950,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":982
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -3961,7 +3964,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":997
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -3972,7 +3975,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1004
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1006
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -3982,7 +3985,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":997
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -3995,7 +3998,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1007
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -4006,7 +4009,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1011
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1013
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -4016,7 +4019,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1007
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -4029,7 +4032,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1014
+/* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -4040,7 +4043,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1018
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1020
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -4048,7 +4051,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1014
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -17959,7 +17962,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 945, __pyx_L1_error)
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 947, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 133, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 148, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(2, 151, __pyx_L1_error)
@@ -17977,25 +17980,25 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":945
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 945, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 947, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":951
+  /* "../../../../../../../../../../opt/homebrew/Caskroom/miniforge/base/envs/hpp/lib/python3.8/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 951, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 953, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -18191,17 +18194,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "cythonfn_OpenMP.pyx":7
- * 
- * 
+  /* "cythonfn_OpenMP.pyx":9
+ * # TODO: Exception has occurred: TypeError
+ * #       a bytes-like object is required, not 'list'
  * def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):             # <<<<<<<<<<<<<<
  *     cdef unsigned int i, length
  *     cdef double complex z, c
  */
-  __pyx_tuple__21 = PyTuple_Pack(8, __pyx_n_s_maxiter, __pyx_n_s_zs, __pyx_n_s_cs, __pyx_n_s_i, __pyx_n_s_length, __pyx_n_s_z, __pyx_n_s_c, __pyx_n_s_output); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(8, __pyx_n_s_maxiter, __pyx_n_s_zs, __pyx_n_s_cs, __pyx_n_s_i, __pyx_n_s_length, __pyx_n_s_z, __pyx_n_s_c, __pyx_n_s_output); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonfn_OpenMP_pyx, __pyx_n_s_calculate_z, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cythonfn_OpenMP_pyx, __pyx_n_s_calculate_z, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 9, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -18683,16 +18686,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cythonfn_OpenMP.pyx":7
- * 
- * 
+  /* "cythonfn_OpenMP.pyx":9
+ * # TODO: Exception has occurred: TypeError
+ * #       a bytes-like object is required, not 'list'
  * def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):             # <<<<<<<<<<<<<<
  *     cdef unsigned int i, length
  *     cdef double complex z, c
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_15cythonfn_OpenMP_1calculate_z, NULL, __pyx_n_s_cythonfn_OpenMP); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_15cythonfn_OpenMP_1calculate_z, NULL, __pyx_n_s_cythonfn_OpenMP); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_calculate_z, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_calculate_z, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "cythonfn_OpenMP.pyx":1
