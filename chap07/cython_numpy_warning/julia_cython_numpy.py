@@ -1,5 +1,6 @@
 import time
 import cythonfn_numpy
+import numpy as np
 
 
 x1, x2, y1, y2 = -1.8, 1.8, -1.8, 1.8
@@ -37,6 +38,8 @@ def calc_pure_python(desired_width, max_iterations):
 
     # TODO: Exception has occurred: TypeError
     #       a bytes-like object is required, not 'list'
+    zs = np.asarray(zs)
+    cs = np.asarray(cs)
     output = cythonfn_numpy.calculate_z(max_iterations, zs, cs)
 
     end_time = time.time()
@@ -52,4 +55,4 @@ if __name__ == "__main__":
 
     # Length of x: 1000
     # Total elements: 1000000
-    # calculate_z took 0.11553573608398438 seconds
+    # calculate_z took 0.30197668075561523 seconds

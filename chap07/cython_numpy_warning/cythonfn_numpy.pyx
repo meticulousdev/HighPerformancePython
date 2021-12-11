@@ -3,8 +3,7 @@ import numpy as np
 cimport numpy as np
 
 
-# def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):
-def calculate_z(int maxiter, zs, cs):
+def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):
     cdef unsigned int i, n
     cdef double complex z, c
     cdef int[:] output = np.empty(len(zs), dtype=np.int32)

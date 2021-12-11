@@ -1,5 +1,6 @@
 import time
 import cythonfn_OpenMP
+import numpy as np
 
 
 x1, x2, y1, y2 = -1.8, 1.8, -1.8, 1.8
@@ -35,9 +36,12 @@ def calc_pure_python(desired_width, max_iterations):
 
     start_time = time.time()
 
-    # TODO: Exception has occurred: TypeError
-    #       a bytes-like object is required, not 'list'
-    output = cythonfn_OpenMP.calculate_z(max_iterations, zs_bytes, cs_bytes)
+    # Exception has occurred: TypeError
+    # a bytes-like object is required, not 'list'
+    # solution: list > np.asarray
+    zs = np.asarray(zs)
+    cs = np.asarray(cs)
+    output = cythonfn_OpenMP.calculate_z(max_iterations, zs, cs)
 
     end_time = time.time()
 
@@ -52,4 +56,4 @@ if __name__ == "__main__":
 
     # Length of x: 1000
     # Total elements: 1000000
-    # calculate_z took 0.30378198623657227 seconds
+    # calculate_z took 0.14845705032348633 seconds

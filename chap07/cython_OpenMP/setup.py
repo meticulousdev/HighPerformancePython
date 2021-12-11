@@ -16,6 +16,7 @@ os.environ["CXX"] = "/opt/homebrew/opt/llvm/bin/clang++"
 #                          extra_compile_args=['-fopenmp'],
 #                          extra_link_args=['-fopenmp'])]
 
+# solution:
 ext_modules = [Extension("cythonfn_OpenMP",
                          ["cythonfn_OpenMP.pyx"],
                          langauge="c++",
