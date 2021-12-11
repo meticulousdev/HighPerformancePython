@@ -1,5 +1,5 @@
 import time
-from torch import zeros, roll
+from numpy import zeros, roll
 
 
 grid_shape = (640, 640)
@@ -24,7 +24,6 @@ def run_experiment(num_iterations):
     block_high = int(grid_shape[0] * 0.5)
     grid[block_low:block_high, block_low:block_high] = 0.005
 
-    grid = grid.cuda()
     start = time.time()
     for i in range(num_iterations):
         grid = evolve(grid, 0, 1)
@@ -33,3 +32,4 @@ def run_experiment(num_iterations):
 
 if __name__ == "__main__":
     print(run_experiment(500))
+    # env: Colab / elapsed time: 2.3601033687591553
