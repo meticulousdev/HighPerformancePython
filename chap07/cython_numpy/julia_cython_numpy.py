@@ -55,4 +55,4 @@ if __name__ == "__main__":
 
     # Length of x: 1000
     # Total elements: 1000000
-    # calculate_z took 0.30197668075561523 seconds
+    # calculate_z took 0.18259286880493164 seconds
