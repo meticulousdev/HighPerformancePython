@@ -35,6 +35,8 @@ def calc_pure_python(desired_width, max_iterations):
 
     start_time = time.time()
 
+    # TODO: Exception has occurred: TypeError
+    #       a bytes-like object is required, not 'list'
     output = cythonfn_numpy.calculate_z(max_iterations, zs, cs)
 
     end_time = time.time()
