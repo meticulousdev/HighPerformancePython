@@ -1,0 +1,154 @@
+Length of x: 1000
+Total elements: 1000000
+OMP: Info #271: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+calculate_z took 0.7208030223846436 seconds
+calculate_z (int64, array(complex128, 1d, C), array(complex128, 1d, C), array(float64, 1d, C))
+--------------------------------------------------------------------------------
+# File: /julia_cython_numba_prange.py
+# --- LINE 52 --- 
+
+@jit(nopython=False, parallel=True)
+
+# --- LINE 53 --- 
+
+def calculate_z(maxiter, zs, cs, output):
+
+    # --- LINE 54 --- 
+    # label 0
+    #   maxiter = arg(0, name=maxiter)  :: int64
+    #   zs = arg(1, name=zs)  :: array(complex128, 1d, C)
+    #   cs = arg(2, name=cs)  :: array(complex128, 1d, C)
+    #   output = arg(3, name=output)  :: array(float64, 1d, C)
+    #   $2load_global.0 = global(prange: <class 'numba.misc.special.prange'>)  :: Function(<class 'numba.misc.special.prange'>)
+    #   $4load_global.1 = global(len: <built-in function len>)  :: Function(<built-in function len>)
+    #   $8call_function.3 = zs_size0.1  :: int64
+    #   del $4load_global.1
+    #   $10call_function.4 = call $2load_global.0(zs_size0.1, func=$2load_global.0, args=[Var(zs_size0.1, julia_cython_numba_OpenMP.py:54)], kws=(), vararg=None, target=None)  :: (int64,) -> range_state_int64
+    #   del $8call_function.3
+    #   del $2load_global.0
+    #   $12get_iter.5 = getiter(value=$10call_function.4)  :: range_iter_int64
+    #   del $10call_function.4
+    #   $phi14.0 = $12get_iter.5  :: range_iter_int64
+    #   del $12get_iter.5
+    #   jump 14
+    # label 14
+    #   $14for_iter.1 = iternext(value=$12get_iter.5)  :: pair<int64, bool>
+    #   $14for_iter.2 = pair_first(value=$14for_iter.1)  :: int64
+    #   $14for_iter.3 = pair_second(value=$14for_iter.1)  :: bool
+    #   del $14for_iter.1
+    #   parfor_index.6 = parfor_index.6  :: uint64
+    #   del $14for_iter.2
+    #   branch $14for_iter.3, 16, 106
+    # label 16
+    #   del $14for_iter.3
+    #   i = parfor_index.6  :: int64
+    #   del $phi16.1
+
+    for i in prange(len(zs)):
+
+        # --- LINE 55 --- 
+        #   n = const(int, 0)  :: Literal[int](0)
+
+        n = 0
+
+        # --- LINE 56 --- 
+        #   z = getitem(value=zs, index=$parfor__index_6.52, fn=<built-in function getitem>)  :: complex128
+
+        z = zs[i]
+
+        # --- LINE 57 --- 
+        #   c = getitem(value=cs, index=$parfor__index_6.52, fn=<built-in function getitem>)  :: complex128
+
+        c = cs[i]
+
+        # --- LINE 58 --- 
+        #   jump 38
+        # label 38
+        #   n.2 = phi(incoming_values=[Var(n, julia_cython_numba_OpenMP.py:55), Var(n.1, julia_cython_numba_OpenMP.py:60)], incoming_blocks=[16, 74])  :: int64
+        #   z.2 = phi(incoming_values=[Var(z, julia_cython_numba_OpenMP.py:56), Var(z.1, julia_cython_numba_OpenMP.py:59)], incoming_blocks=[16, 74])  :: complex128
+        #   $42compare_op.3 = n.2.2 < maxiter  :: bool
+        #   bool44 = global(bool: <class 'bool'>)  :: Function(<class 'bool'>)
+        #   $44pred = call $push_global_to_block.56($42compare_op.3, func=$push_global_to_block.56, args=(Var($42compare_op.3, julia_cython_numba_OpenMP.py:58),), kws=(), vararg=None, target=None)  :: (bool,) -> bool
+        #   del bool44
+        #   del $42compare_op.3
+        #   branch $44pred, 46, 96
+        # label 46
+        #   del $44pred
+        #   $48load_attr.2 = getattr(value=z.2.2, attr=real)  :: float64
+        #   $52load_attr.4 = getattr(value=z.2.2, attr=real)  :: float64
+        #   $54binary_multiply.5 = $48load_attr.2 * $52load_attr.4  :: float64
+        #   del $52load_attr.4
+        #   del $48load_attr.2
+        #   $58load_attr.7 = getattr(value=z.2.2, attr=imag)  :: float64
+        #   $62load_attr.9 = getattr(value=z.2.2, attr=imag)  :: float64
+        #   $64binary_multiply.10 = $58load_attr.7 * $62load_attr.9  :: float64
+        #   del $62load_attr.9
+        #   del $58load_attr.7
+        #   $66binary_add.11 = $54binary_multiply.5 + $64binary_multiply.10  :: float64
+        #   del $64binary_multiply.10
+        #   del $54binary_multiply.5
+        #   $const68.12 = const(int, 4)  :: Literal[int](4)
+        #   $70compare_op.13 = $66binary_add.11 < $const68.12  :: bool
+        #   del $const68.12
+        #   del $66binary_add.11
+        #   bool72 = global(bool: <class 'bool'>)  :: Function(<class 'bool'>)
+        #   $72pred = call $push_global_to_block.57($70compare_op.13, func=$push_global_to_block.57, args=(Var($70compare_op.13, julia_cython_numba_OpenMP.py:58),), kws=(), vararg=None, target=None)  :: (bool,) -> bool
+        #   del bool72
+        #   del $70compare_op.13
+        #   branch $72pred, 74, 96
+
+        while n < maxiter and (z.real * z.real + z.imag * z.imag) < 4:
+
+            # --- LINE 59 --- 
+            # label 74
+            #   del $72pred
+            #   $78binary_multiply.3 = z.2.2 * z.2.2  :: complex128
+            #   del z.2
+            #   z.1 = $78binary_multiply.3 + c  :: complex128
+            #   del $78binary_multiply.3
+
+            z = z * z + c
+
+            # --- LINE 60 --- 
+            #   $const88.7 = const(int, 1)  :: Literal[int](1)
+            #   $n.2.19 = inplace_binop(fn=<built-in function iadd>, immutable_fn=<built-in function add>, lhs=n.2.2, rhs=$const88.7, static_lhs=Undefined, static_rhs=Undefined)  :: int64
+            #   del n.2
+            #   del $const88.7
+            #   n.1 = $n.1.9  :: int64
+            #   del $90inplace_add.8
+            #   jump 38
+
+            n += 1
+
+        # --- LINE 61 --- 
+        # label 96
+        #   del z.2
+        #   del z
+        #   del n
+        #   del c
+        #   del $72pred
+        #   del $44pred
+        #   output[parfor__index_6] = n.2  :: (array(float64, 1d, C), int64, int64) -> none
+        #   del n.2
+        #   del i
+        #   jump 107
+        # label 106
+        #   del zs
+        #   del z.1
+        #   del output
+        #   del n.1
+        #   del maxiter
+        #   del cs
+        #   del $phi16.1
+        #   del $phi14.0
+        #   del $14for_iter.3
+        #   $const106.0 = const(NoneType, None)  :: none
+        #   $108return_value.1 = cast(value=$const106.0)  :: none
+        #   del $const106.0
+        #   return $108return_value.1
+
+        output[i] = n
+
+
+================================================================================
+None
