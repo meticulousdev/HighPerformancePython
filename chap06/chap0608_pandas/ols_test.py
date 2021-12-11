@@ -17,7 +17,7 @@ def ols_sklearn_lineprofiler(row) -> None:
     X = np.arange(row.shape[0]).reshape(-1, 1)
 
     print("Run on a single row")
-    # TODO: name 'est' is not defined 
+    # name 'est' is not defined 
     # lp = LineProfiler(est.fit)
     # lp.run("est.fit(X, row.values)")
     # lp.print_stats()

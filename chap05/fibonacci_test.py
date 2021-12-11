@@ -9,7 +9,6 @@ def fibonacci_list(num_items):
 
 
 # generator
-# TODO yield
 def fibonacci_gen(num_items):
     a, b = 0, 1
     while num_items:
@@ -56,7 +55,6 @@ def fibonacci_transform():
     return count
 
 
-# TODO takewhile
 from itertools import takewhile
 def fibonacci_succinct():
     first_5000 = takewhile(lambda x: x <= 5000, fibonacci())
