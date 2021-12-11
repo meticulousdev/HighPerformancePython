@@ -1,4 +1,3 @@
-from distutils import extension
 from distutils.core import setup 
 from distutils.extension import Extension
 import numpy as np

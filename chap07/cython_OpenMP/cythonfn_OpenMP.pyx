@@ -4,9 +4,6 @@ import numpy as np
 cimport numpy as np
 
 
-# TODO: Exception has occurred: TypeError
-#       a bytes-like object is required, not 'list'
-
 def calculate_z(int maxiter, double complex[:] zs, double complex[:] cs):
     cdef unsigned int i, length
     cdef double complex z, c

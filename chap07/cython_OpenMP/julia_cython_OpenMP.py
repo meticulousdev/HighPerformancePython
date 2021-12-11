@@ -35,7 +35,9 @@ def calc_pure_python(desired_width, max_iterations):
 
     start_time = time.time()
 
-    output = cythonfn_OpenMP.calculate_z(max_iterations, zs, cs)
+    # TODO: Exception has occurred: TypeError
+    #       a bytes-like object is required, not 'list'
+    output = cythonfn_OpenMP.calculate_z(max_iterations, zs_bytes, cs_bytes)
 
     end_time = time.time()
 
