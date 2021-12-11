@@ -2,7 +2,6 @@ import pyximport
 pyximport.install(language_level=3)
 import cythonfn
 import time
-from functools import wraps
 
 
 x1, x2, y1, y2 = -1.8, 1.8, -1.8, 1.8
