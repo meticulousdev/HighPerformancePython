@@ -11,6 +11,10 @@ Your python: python=3.8.10
 - Ubuntu
 $ conda create -n pypy3 -c conda-forge pypy3
 $ pypy3
-Python 3.7.12 | packaged by conda-forge | ...
+Python 3.7.12 | packaged by conda-forge | (44db2626, Nov 15 2021, 12:53:46)
+[PyPy 7.3.7 with GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>>
+>>>> exit()
 $ pypy3 -m ensurepip
 $ pip3 install ipython
