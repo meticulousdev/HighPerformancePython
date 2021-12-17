@@ -61,4 +61,5 @@ def run_experiment(num_iterations):
 
 
 if __name__ == "__main__":
-    run_experiment(500)
+    print(f"diffusion took {run_experiment(500)} seconds")
+    # diffusion took 0.7017867565155029 seconds
