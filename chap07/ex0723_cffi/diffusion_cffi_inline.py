@@ -6,7 +6,23 @@ grid_shape = (512, 512)
 
 ffi = FFI()
 ffi.cdef("void evolve(double **in, double **out, double D, double dt);")
-lib = ffi.dlopen("../ex0720_ffi/diffusion.so")
+lib = ffi.verify(
+    r"""
+void evolve(double in[][512], double out[][512], double D, double dt)
+{
+    int i, j;
+    double laplacian;
+    for(i = 1; i < 511; i++)
+    {
+        for(j = 1; j < 511; j++)
+        {
+            laplacian = in[i+1][j] + in[i-1][j] + in[i][j+1] + in[i][j-1] - 4 * in[i][j];
+            out[i][j] = in[i][j] + D * dt * laplacian;
+        }
+    }
+}
+""", extra_compile_args=["-O3"]
+)
 
 
 def evolve(grid, out, dt, D=1.0):
@@ -32,4 +48,4 @@ def run_experiment(num_iterations):
 
 if __name__ == "__main__":
     print(f"diffusion took {run_experiment(500)} seconds")
-    # diffusion took 0.05642199516296387 seconds
+    # diffusion took 0.05594968795776367 seconds
