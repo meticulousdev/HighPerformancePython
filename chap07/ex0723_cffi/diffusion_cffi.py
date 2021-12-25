@@ -6,7 +6,8 @@ grid_shape = (512, 512)
 
 ffi = FFI()
 ffi.cdef("void evolve(double **in, double **out, double D, double dt);")
-lib = ffi.dlopen("../ex0720_ffi/diffusion.so")
+# open vscode ex0723_cffi
+lib = ffi.dlopen("../ex0721_ffi_ctypes/diffusion.so")
 
 
 def evolve(grid, out, dt, D=1.0):
