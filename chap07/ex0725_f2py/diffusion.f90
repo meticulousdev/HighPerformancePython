@@ -1,4 +1,4 @@
-SUBROUTINE evlove(grid, next_grid, D, dt, N, M)
+SUBROUTINE evolve(grid, next_grid, D, dt, N, M)
     !f2py threadsafe
     !f2py intent(in) grid
     !f2py intent(inplace) next_grid
