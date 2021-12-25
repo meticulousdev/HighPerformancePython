@@ -14,6 +14,8 @@ int main(void)
 
     printf("point\n");
     printf("(%f, %f)\n", pnt.x, pnt.y);
+    printf("id: %s\n", pnt.id);
+    printf("visited: %d\n", pnt.num_times_visited);
 
     return 0;
 }
