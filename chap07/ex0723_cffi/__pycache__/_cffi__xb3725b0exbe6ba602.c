@@ -263,74 +263,52 @@ static int _cffi_init(void)
 
 
 
-void evolve(double in[][512], double out[][512], double D, double dt)
-{
-    int i, j;
-    double laplacian;
-    for(i = 1; i < 511; i++)
-    {
-        for(j = 1; j < 511; j++)
-        {
-            laplacian = in[i+1][j] + in[i-1][j] + in[i][j+1] + in[i][j-1] - 4 * in[i][j];
-            out[i][j] = in[i][j] + D * dt * laplacian;
-        }
-    }
-}
+    #include "complicated.h"
 
 
 static PyObject *
-_cffi_f_evolve(PyObject *self, PyObject *args)
+_cffi_f_do_calculation(PyObject *self, PyObject *noarg)
 {
-  double * * x0;
-  double * * x1;
-  double x2;
-  double x3;
-  Py_ssize_t datasize;
-  struct _cffi_freeme_s *large_args_free = NULL;
-  PyObject *arg0;
-  PyObject *arg1;
-  PyObject *arg2;
-  PyObject *arg3;
-
-  if (!PyArg_ParseTuple(args, "OOOO:evolve", &arg0, &arg1, &arg2, &arg3))
-    return NULL;
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(0), arg0, (char **)&x0);
-  if (datasize != 0) {
-    x0 = ((size_t)datasize) <= 640 ? alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(0), arg0, (char **)&x0,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(0), arg1, (char **)&x1);
-  if (datasize != 0) {
-    x1 = ((size_t)datasize) <= 640 ? alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(0), arg1, (char **)&x1,
-            datasize, &large_args_free) < 0)
-      return NULL;
-  }
-
-  x2 = (double)_cffi_to_c_double(arg2);
-  if (x2 == (double)-1 && PyErr_Occurred())
-    return NULL;
-
-  x3 = (double)_cffi_to_c_double(arg3);
-  if (x3 == (double)-1 && PyErr_Occurred())
-    return NULL;
+  struct Point result;
+  PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
   _cffi_restore_errno();
-  { evolve(x0, x1, x2, x3); }
+  { result = do_calculation(); }
   _cffi_save_errno();
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
-  if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  Py_INCREF(Py_None);
-  return Py_None;
+  (void)noarg; /* unused */
+  pyresult = _cffi_from_c_struct((char *)&result, _cffi_type(0));
+  return pyresult;
+}
+
+static void _cffi_check_struct_Point(struct Point *p)
+{
+  /* only to generate compile-time warnings or errors */
+  (void)p;
+  { double *tmp = &p->x; (void)tmp; }
+  { double *tmp = &p->y; (void)tmp; }
+}
+static PyObject *
+_cffi_layout_struct_Point(PyObject *self, PyObject *noarg)
+{
+  struct _cffi_aligncheck { char x; struct Point y; };
+  static Py_ssize_t nums[] = {
+    sizeof(struct Point),
+    offsetof(struct _cffi_aligncheck, y),
+    offsetof(struct Point, x),
+    sizeof(((struct Point *)0)->x),
+    offsetof(struct Point, y),
+    sizeof(((struct Point *)0)->y),
+    -1
+  };
+  (void)self; /* unused */
+  (void)noarg; /* unused */
+  return _cffi_get_struct_layout(nums);
+  /* the next line is not executed, but compiled */
+  _cffi_check_struct_Point(0);
 }
 
 static int _cffi_setup_custom(PyObject *lib)
@@ -339,7 +317,8 @@ static int _cffi_setup_custom(PyObject *lib)
 }
 
 static PyMethodDef _cffi_methods[] = {
-  {"evolve", _cffi_f_evolve, METH_VARARGS, NULL},
+  {"do_calculation", _cffi_f_do_calculation, METH_NOARGS, NULL},
+  {"_cffi_layout_struct_Point", _cffi_layout_struct_Point, METH_NOARGS, NULL},
   {"_cffi_setup", _cffi_setup, METH_VARARGS, NULL},
   {NULL, NULL, 0, NULL}    /* Sentinel */
 };
@@ -348,7 +327,7 @@ static PyMethodDef _cffi_methods[] = {
 
 static struct PyModuleDef _cffi_module_def = {
   PyModuleDef_HEAD_INIT,
-  "_cffi__xe46f13b0x5e8a8854",
+  "_cffi__xb3725b0exbe6ba602",
   NULL,
   -1,
   _cffi_methods,
@@ -356,7 +335,7 @@ static struct PyModuleDef _cffi_module_def = {
 };
 
 PyMODINIT_FUNC
-PyInit__cffi__xe46f13b0x5e8a8854(void)
+PyInit__cffi__xb3725b0exbe6ba602(void)
 {
   PyObject *lib;
   lib = PyModule_Create(&_cffi_module_def);
@@ -372,10 +351,10 @@ PyInit__cffi__xe46f13b0x5e8a8854(void)
 #else
 
 PyMODINIT_FUNC
-init_cffi__xe46f13b0x5e8a8854(void)
+init_cffi__xb3725b0exbe6ba602(void)
 {
   PyObject *lib;
-  lib = Py_InitModule("_cffi__xe46f13b0x5e8a8854", _cffi_methods);
+  lib = Py_InitModule("_cffi__xb3725b0exbe6ba602", _cffi_methods);
   if (lib == NULL)
     return;
   if (((void)lib,0) < 0 || _cffi_init() < 0)

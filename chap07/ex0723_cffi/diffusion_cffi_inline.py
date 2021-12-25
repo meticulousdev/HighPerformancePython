@@ -7,7 +7,7 @@ grid_shape = (512, 512)
 ffi = FFI()
 ffi.cdef("void evolve(double **in, double **out, double D, double dt);")
 lib = ffi.verify(
-    r"""
+r"""
 void evolve(double in[][512], double out[][512], double D, double dt)
 {
     int i, j;
@@ -49,3 +49,6 @@ def run_experiment(num_iterations):
 if __name__ == "__main__":
     print(f"diffusion took {run_experiment(500)} seconds")
     # diffusion took 0.05594968795776367 seconds
+    # warning: incompatible pointer types passing 'double **' 
+    # to parameter of type 'double (*)[512]' [-Wincompatible-pointer-types]
+    # 2 warnings generated.
