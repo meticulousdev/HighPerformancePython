@@ -21,8 +21,12 @@ if __name__ == "__main__":
     import time
 
     delay = 100
-    num_iter = 500
-    base_url = f"http://127.0.0.1:8080/add?name=serial&delay={delay}&"
+    num_iter = 1000
+    # base_url = f"http://127.0.0.1:8080/add?name=serial&delay={delay}&"
+    # base_url = f"http://www.google.com/add?name=serial&delay={delay}&"
+    # Result: 1560000, Time: 100.01842927932739
+    base_url = f"https://www.google.com/add?name=serial&delay={delay}&"
+    # Result: 1560000, Time: 202.2268431186676
 
     start = time.time()
     result = run_experiment(base_url, num_iter)
