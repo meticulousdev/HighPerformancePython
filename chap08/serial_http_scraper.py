@@ -22,14 +22,11 @@ if __name__ == "__main__":
 
     delay = 100
     num_iter = 1000
-    # base_url = f"http://127.0.0.1:8080/add?name=serial&delay={delay}&"
-    # base_url = f"http://www.google.com/add?name=serial&delay={delay}&"
-    # Result: 1560000, Time: 100.01842927932739
-    base_url = f"https://www.google.com/add?name=serial&delay={delay}&"
-    # Result: 1560000, Time: 202.2268431186676
+    base_url = f"http://127.0.0.1/add?name=serial&delay={delay}&"
 
     start = time.time()
     result = run_experiment(base_url, num_iter)
     end = time.time()
 
     print(f"Result: {result}, Time: {end - start}")
+    # Result: 196000, Time: 1.4080660343170166
