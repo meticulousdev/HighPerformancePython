@@ -5,6 +5,7 @@ import urllib.parse
 import urllib.request
 from contextlib import closing
 
+# conda install gevent
 import gevent
 from gevent import monkey
 from gevent.lock import Semaphore
