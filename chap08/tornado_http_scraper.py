@@ -45,6 +45,7 @@ if __name__ == "__main__":
 
     # ModuleNotFoundError: No module named 'pycurl'
     # https://gist.github.com/vidakDK/de86d751751b355ed3b26d69ecdbdb99
+    # pycurl                    7.44.1                   pypi_0    pypi
 
     # ValueError: a coroutine was expected, got functools.partial(<function run_experiment at 0x1054403a0>, 'http://127.0.0.1?name=tornado&delay=100&', 1000)
     # result = asyncio.run(run_func) > result = asyncio.run(run_func())
