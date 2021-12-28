@@ -46,4 +46,4 @@ if __name__ == "__main__":
 
     print(f"Result: {result}, Time: {end - start}")
     # Result: 45000, Time: 0.1672039031982422
-    # different response_size > different time ?
+    # different response_size > different time ? > check base url
