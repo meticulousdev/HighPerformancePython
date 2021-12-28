@@ -22,11 +22,14 @@ if __name__ == "__main__":
 
     delay = 100
     num_iter = 1000
-    base_url = f"http://127.0.0.1/add?name=serial&delay={delay}&"
+    base_url = f"http://127.0.0.1?name=serial&delay={delay}&"
 
     start = time.time()
     result = run_experiment(base_url, num_iter)
     end = time.time()
 
     print(f"Result: {result}, Time: {end - start}")
+    # base_url = f"http://127.0.0.1/add?name=serial&delay={delay}&" 
     # Result: 196000, Time: 1.4080660343170166
+    # base_url = f"http://127.0.0.1?name=serial&delay={delay}&"
+    # Result: 45000, Time: 1.816404104232788
