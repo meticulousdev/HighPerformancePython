@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     delay = 100
     num_iter = 1000
-    base_url = f"http://127.0.0.1?name=gevent&delay={delay}&"
+    base_url = f"http://127.0.0.1:8080/add?name=gevent&delay={delay}&"
 
     start = time.time()
     result = run_experiment(base_url, num_iter)

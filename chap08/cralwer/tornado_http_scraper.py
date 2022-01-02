@@ -32,7 +32,7 @@ if __name__ == "__main__":
     delay = 100
     num_iter = 1000
     run_func = partial(run_experiment,
-                       f"http://127.0.0.1?name=tornado&delay={delay}&",
+                       f"http://127.0.0.1:8080/add?name=tornado&delay={delay}&",
                        num_iter)
 
     start = time.time()

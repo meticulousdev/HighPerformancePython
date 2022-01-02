@@ -40,7 +40,7 @@ if __name__ == "__main__":
     delay = 100
     num_iter = 1000
     start = time.time()
-    result = loop.run_until_complete(run_experiment(f"http://127.0.0.1?name=asyncio&delay={delay}&", num_iter))
+    result = loop.run_until_complete(run_experiment(f"http://127.0.0.1:8080/add?name=asyncio&delay={delay}&", num_iter))
     end = time.time()
 
     print(f"Result: {result}, Time: {end - start}")
