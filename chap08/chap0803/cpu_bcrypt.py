@@ -14,6 +14,7 @@ def do_task(difficulty):
     return result.decode("utf8")
 
 
+# error
 def save_result_serial(result):
     url = f"http://127.0.0.1:8080/add"
     response = requests.post(url, data=result)
