@@ -25,13 +25,13 @@ if __name__ == "__main__":
     nbr_samples_in_total = 1e8
     
     # w/o multiprocessing 
-    t1 = time.time()
-    nbr_in_quater_unit_circles = estimate_nbr_points_in_quarter_circle(nbr_samples_in_total)
-    t2 = time.time()
-    print("w/o multiprocessing")
-    print(f"elapsed time: {t2 - t1}")
-    pi_estimate = nbr_in_quater_unit_circles * 4 / nbr_samples_in_total
-    print(f"pi estimate : {pi_estimate}")
+    # t1 = time.time()
+    # nbr_in_quater_unit_circles = estimate_nbr_points_in_quarter_circle(nbr_samples_in_total)
+    # t2 = time.time()
+    # print("w/o multiprocessing")
+    # print(f"elapsed time: {t2 - t1}")
+    # pi_estimate = nbr_in_quater_unit_circles * 4 / nbr_samples_in_total
+    # print(f"pi estimate : {pi_estimate}")
 
     # w/o multiprocessing
     # Executing estiate_nbr_points_in_quater_circle             with 100,000,000.0, on pid 2122
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     t1 = time.time()
     nbr_in_quater_unit_circles = pool.map(estimate_nbr_points_in_quarter_circle, nbr_trials_per_process)
     t2 = time.time()
-    pi_estimate = sum(nbr_trials_per_process) * 4 / float(nbr_samples_in_total)
+    pi_estimate = sum(nbr_in_quater_unit_circles) * 4 / float(nbr_samples_in_total)
     print(f"elapsed time: {t2 - t1}")
     print(f"pi estimate : {pi_estimate}")
 
@@ -59,5 +59,5 @@ if __name__ == "__main__":
     # Executing estiate_nbr_points_in_quater_circle             with 25,000,000.0, on pid 2531
     # Executing estiate_nbr_points_in_quater_circle             with 25,000,000.0, on pid 2532
     # Executing estiate_nbr_points_in_quater_circle             with 25,000,000.0, on pid 2533
-    # elapsed time: 51.123993158340454
-    # pi estimate : 4.0
+    # elapsed time: 49.45988464355469
+    # pi estimate : 3.14121164
