@@ -1,7 +1,7 @@
 import time
 from joblib import Parallel, delayed
 
-from pi_estimation_multiprocessing import estimate_nbr_points_in_quarter_circle
+from pi_multiprocessing import estimate_nbr_points_in_quarter_circle
 
 
 if __name__ == "__main__":
