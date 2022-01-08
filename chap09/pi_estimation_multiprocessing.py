@@ -25,13 +25,13 @@ if __name__ == "__main__":
     nbr_samples_in_total = 1e8
     
     # w/o multiprocessing 
-    # t1 = time.time()
-    # nbr_in_quater_unit_circles = estimate_nbr_points_in_quarter_circle(nbr_samples_in_total)
-    # t2 = time.time()
-    # print("w/o multiprocessing")
-    # print(f"elapsed time: {t2 - t1}")
-    # pi_estimate = nbr_in_quater_unit_circles * 4 / nbr_samples_in_total
-    # print(f"pi estimate : {pi_estimate}")
+    t1 = time.time()
+    nbr_in_quater_unit_circles = estimate_nbr_points_in_quarter_circle(nbr_samples_in_total)
+    t2 = time.time()
+    print("w/o multiprocessing")
+    print(f"elapsed time: {t2 - t1}")
+    pi_estimate = nbr_in_quater_unit_circles * 4 / nbr_samples_in_total
+    print(f"pi estimate : {pi_estimate}")
 
     # w/o multiprocessing
     # Executing estiate_nbr_points_in_quater_circle             with 100,000,000.0, on pid 2122
