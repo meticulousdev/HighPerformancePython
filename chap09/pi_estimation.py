@@ -5,7 +5,7 @@ import time
 
 
 def estimate_nbr_points_in_quarter_circle(nbr_estimates):
-    print(f"Executing estiate_nbr_points_in_quater_circle \
+    print(f"Executing estimate_nbr_points_in_quater_circle \
             with {nbr_estimates:,}, on pid {os.getpid()}")
     nbr_trials_in_quarter_unit_circle = 0
     for _ in range(int(nbr_estimates)):
@@ -30,6 +30,6 @@ if __name__ == "__main__":
     print(f"pi estimate : {pi_estimate}")
 
     # w/o multiprocessing
-    # Executing estiate_nbr_points_in_quater_circle             with 100,000,000.0, on pid 2122
+    # Executing estimate_nbr_points_in_quater_circle             with 100,000,000.0, on pid 2122
     # elapsed time: 34.236793994903564
     # pi estimate: 3.14173576
