@@ -23,9 +23,9 @@ if __name__ == "__main__":
     # Executing estiate_nbr_points_in_quater_circle             with 25,000,000.0, on pid 4081
     # Executing estiate_nbr_points_in_quater_circle             with 25,000,000.0, on pid 4084
     # Executing estiate_nbr_points_in_quater_circle             with 25,000,000.0, on pid 4083
-    # [Parallel(n_jobs=4)]: Done   2 out of   4 | elapsed:   48.5s remaining:   48.5s
-    # [Parallel(n_jobs=4)]: Done   4 out of   4 | elapsed:   49.0s finished
-    # elapsed time: 48.988774061203
+    # [Parallel(n_jobs=4)]: Done   2 out of   4 | elapsed:   10.1s remaining:   10.1s
+    # [Parallel(n_jobs=4)]: Done   4 out of   4 | elapsed:   10.1s finished
+    # elapsed time: 10.083842039108276
     # pi estimate : 3.14167388 
 
     # [Parallel(n_jobs=8)]: Using backend LokyBackend with 8 concurrent workers.
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # Executing estiate_nbr_points_in_quater_circle             with 12,500,000.0, on pid 4222
     # Executing estiate_nbr_points_in_quater_circle             with 12,500,000.0, on pid 4224
     # Executing estiate_nbr_points_in_quater_circle             with 12,500,000.0, on pid 4223
-    # [Parallel(n_jobs=8)]: Done   2 out of   8 | elapsed:   38.0s remaining:  1.9min
-    # [Parallel(n_jobs=8)]: Done   8 out of   8 | elapsed:   38.7s finished
-    # elapsed time: 38.671345949172974
+    # [Parallel(n_jobs=8)]: Done   2 out of   8 | elapsed:    7.2s remaining:   21.7s
+    # [Parallel(n_jobs=8)]: Done   8 out of   8 | elapsed:    7.5s finished
+    # elapsed time: 7.398721694946289
     # pi estimate : 3.14186832

@@ -42,9 +42,9 @@ if __name__ == "__main__":
     # Executing estimate_nbr_points_in_quater_circle with             25000000.0 on sample 1 on pid 6184
     # Executing estimate_nbr_points_in_quater_circle with             25000000.0 on sample 2 on pid 6183
     # Executing estimate_nbr_points_in_quater_circle with             25000000.0 on sample 3 on pid 6185
-    # [Parallel(n_jobs=4)]: Done   2 out of   4 | elapsed:   52.9s remaining:   52.9s
-    # [Parallel(n_jobs=4)]: Done   4 out of   4 | elapsed:   53.3s finished
-    # elapsed time: 53.2749388217926
+    # [Parallel(n_jobs=4)]: Done   2 out of   4 | elapsed:   10.2s remaining:   10.2s
+    # [Parallel(n_jobs=4)]: Done   4 out of   4 | elapsed:   10.3s finished
+    # elapsed time: 10.26299786567688
     # pi estimate : 3.14143392
 
     # second run
