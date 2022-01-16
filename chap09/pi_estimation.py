@@ -33,3 +33,9 @@ if __name__ == "__main__":
     # Executing estimate_nbr_points_in_quater_circle             with 100,000,000.0, on pid 2122
     # elapsed time: 34.236793994903564
     # pi estimate: 3.14173576
+
+    # Executing estimate_nbr_points_in_quater_circle             with 100,000,000.0, on pid 1116
+    # w/o or w/ power
+    # w/o multiprocessing
+    # elapsed time: 173.94270014762878
+    # pi estimate : 3.141641
