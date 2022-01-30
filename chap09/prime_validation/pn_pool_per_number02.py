@@ -1,5 +1,4 @@
 import math
-from tabnanny import check
 import timeit
 from multiprocessing import Pool
 import create_range
