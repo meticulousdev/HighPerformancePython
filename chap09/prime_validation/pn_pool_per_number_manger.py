@@ -1,7 +1,15 @@
 import math
+from tabnanny import check
 import timeit
 from multiprocessing import Pool
 import create_range
+
+
+SERIAL_CHECK_CUTOFF = 21
+CHECK_EVERY = 1000
+FLAG_CLEAR = b'0'
+FLAG_SET = b'1'
+print("CHECK_EVERY", CHECK_EVERY)
 
 
 def check_prime_in_range(n_from_i_to_i):
@@ -17,6 +25,11 @@ def check_prime_in_range(n_from_i_to_i):
 
 def check_prime(n, pool, nbr_processes):
     from_i = 3
+    to_i = 21
+    if not check_prime_in_range((n, (from_i, to_i))):
+        return False
+    
+    from_i = to_i
     to_i = int(math.sqrt(n)) + 1
 
     ranges_to_check = create_range.create(from_i, to_i, nbr_processes)
@@ -30,7 +43,6 @@ def check_prime(n, pool, nbr_processes):
     return True
 
 
-# 343p
 if __name__ == "__main__":
     NBR_PROCESSES = 4
     pool = Pool(processes=NBR_PROCESSES)
