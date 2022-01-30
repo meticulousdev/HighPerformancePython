@@ -4,6 +4,7 @@ from multiprocessing import Manager, Pool, Process
 import time
 
 
+# IPC: inter process communication
 FLAG_ALL_DONE = b"WORK_FINISHED"
 FLAG_WORKER_FINISHED_PROCESSING = b"WORKER_FINISHED_PROCESSING"
 
